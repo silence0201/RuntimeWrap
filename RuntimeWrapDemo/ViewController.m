@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "SIRuntime.h"
 
 @interface ViewController ()
+
+@property (nonatomic,strong) NSString *test ;
 
 @end
 
@@ -16,6 +19,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    SIRuntime *runtime = [SIRuntime runtimeWithClass:self.class] ;
+    
+    NSArray *array = [runtime propertyListWithEnumrated:YES] ;
+    for(SIRuntimeProperty *property in array){
+        if (property.propertyEncoding.isObject) {
+            NSLog(@"%@",NSStringFromClass(property.clazz)) ;
+        }else if(property.propertyEncoding.isStructure){
+            NSLog(@"%@",property.structureName) ;
+        }else{
+            NSLog(@"%@",property.attributes) ;
+        }
+        
+    }
 }
 
 

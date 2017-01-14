@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SIRuntimeProperty.h"
 
 @interface SIRuntime : NSObject
 
@@ -15,6 +16,7 @@
 - (instancetype)initWithClass:(Class)clazz ;
 + (instancetype)runtimeWithClass:(Class)clazz ;
 
+- (NSArray<SIRuntimeProperty *> *)propertyListWithEnumrated:(BOOL)enumrated ;
 
 
 @end
