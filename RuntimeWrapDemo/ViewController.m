@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "SIRuntime.h"
+#import "SIRuntimeMethod.h"
+#import <objc/runtime.h>
 
 @interface ViewController ()
 
@@ -20,18 +22,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     SIRuntime *runtime = [SIRuntime runtimeWithClass:self.class] ;
+    SIRuntimeProperty *t = [runtime propertyWithName:@"test"] ;
     
-    NSArray *array = [runtime propertyListWithEnumrated:YES] ;
-    for(SIRuntimeProperty *property in array){
-        if (property.propertyEncoding.isObject) {
-            NSLog(@"%@",NSStringFromClass(property.clazz)) ;
-        }else if(property.propertyEncoding.isStructure){
-            NSLog(@"%@",property.structureName) ;
-        }else{
-            NSLog(@"%@",property.attributes) ;
-        }
-        
-    }
+    NSLog(@"%@",NSStringFromClass(t.clazz)) ;
+    NSLog(@"%@",t.varName) ;
+    
+    Method Method = class_getInstanceMethod(self.class, @selector(test:wit:)) ;
+    SIRuntimeMethod *m = [SIRuntimeMethod runtimeMethodWithMethod:Method] ;
+    NSLog(@"%@",m.typeEncoding) ;
+    NSLog(@"%@",m.returnType) ;
+    NSLog(@"%@",m.argumentsTypes) ;
+}
+
+- (NSString *)test:(NSString *)t wit:(NSString *)ii{
+    NSLog(@"%@",t) ;
+    return t ;
 }
 
 

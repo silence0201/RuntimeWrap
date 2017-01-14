@@ -53,6 +53,14 @@
     
 }
 
+- (SIRuntimeProperty *)propertyWithName:(NSString *)name{
+    objc_property_t property = class_getProperty(_clazz, [name UTF8String]) ;
+    NSString *nam = [NSString stringWithUTF8String:property_getName(property)] ;
+    NSString *attributes = [NSString stringWithUTF8String:property_getAttributes(property)] ;
+    SIRuntimeProperty *runtimeProperty = [SIRuntimeProperty runtimePropertyWithName:nam andAttributes:attributes] ;
+    return runtimeProperty ;
+}
+
 - (void)addpropertyFromClass:(Class)clazz{
     unsigned int outCount ;
     objc_property_t *properties = class_copyPropertyList(clazz, &outCount) ;

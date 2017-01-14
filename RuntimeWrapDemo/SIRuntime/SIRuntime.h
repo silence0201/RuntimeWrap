@@ -17,6 +17,7 @@
 + (instancetype)runtimeWithClass:(Class)clazz ;
 
 - (NSArray<SIRuntimeProperty *> *)propertyListWithEnumrated:(BOOL)enumrated ;
+- (SIRuntimeProperty *)propertyWithName:(NSString *)name ;
 
 
 @end

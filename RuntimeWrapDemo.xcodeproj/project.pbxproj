@@ -17,6 +17,7 @@
 		E8D59AE01E2A07A000D2A745 /* SIRuntimeProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D59ADF1E2A07A000D2A745 /* SIRuntimeProperty.m */; };
 		E8D59AE31E2A07B800D2A745 /* SIRuntimePropertyType.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D59AE21E2A07B800D2A745 /* SIRuntimePropertyType.m */; };
 		E8D59AE61E2A07CB00D2A745 /* SIRuntimeEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D59AE51E2A07CB00D2A745 /* SIRuntimeEncoding.m */; };
+		E8D59AE91E2A511600D2A745 /* SIRuntimeMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D59AE81E2A511600D2A745 /* SIRuntimeMethod.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		E8D59AE21E2A07B800D2A745 /* SIRuntimePropertyType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIRuntimePropertyType.m; sourceTree = "<group>"; };
 		E8D59AE41E2A07CB00D2A745 /* SIRuntimeEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIRuntimeEncoding.h; sourceTree = "<group>"; };
 		E8D59AE51E2A07CB00D2A745 /* SIRuntimeEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIRuntimeEncoding.m; sourceTree = "<group>"; };
+		E8D59AE71E2A511600D2A745 /* SIRuntimeMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIRuntimeMethod.h; sourceTree = "<group>"; };
+		E8D59AE81E2A511600D2A745 /* SIRuntimeMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIRuntimeMethod.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,8 @@
 			children = (
 				E8D59ADB1E2A05BE00D2A745 /* SIRuntime.h */,
 				E8D59ADC1E2A05BE00D2A745 /* SIRuntime.m */,
+				E8D59AE71E2A511600D2A745 /* SIRuntimeMethod.h */,
+				E8D59AE81E2A511600D2A745 /* SIRuntimeMethod.m */,
 				E8D59ADE1E2A07A000D2A745 /* SIRuntimeProperty.h */,
 				E8D59ADF1E2A07A000D2A745 /* SIRuntimeProperty.m */,
 				E8D59AE11E2A07B800D2A745 /* SIRuntimePropertyType.h */,
@@ -184,6 +189,7 @@
 				E8D59ADD1E2A05BE00D2A745 /* SIRuntime.m in Sources */,
 				E8D59AE31E2A07B800D2A745 /* SIRuntimePropertyType.m in Sources */,
 				E8D59AC51E29CEB600D2A745 /* main.m in Sources */,
+				E8D59AE91E2A511600D2A745 /* SIRuntimeMethod.m in Sources */,
 				E8D59AE01E2A07A000D2A745 /* SIRuntimeProperty.m in Sources */,
 				E8D59AE61E2A07CB00D2A745 /* SIRuntimeEncoding.m in Sources */,
 			);

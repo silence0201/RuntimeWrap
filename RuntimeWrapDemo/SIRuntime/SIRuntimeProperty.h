@@ -13,6 +13,7 @@
 @interface SIRuntimeProperty : NSObject
 
 @property (nonatomic,strong,readonly) NSString *name ;
+@property (nonatomic,strong,readonly) NSString *varName ;
 @property (nonatomic,strong,readonly) NSString *attributes ;
 
 @property (nonatomic,assign,readonly) Class clazz ;

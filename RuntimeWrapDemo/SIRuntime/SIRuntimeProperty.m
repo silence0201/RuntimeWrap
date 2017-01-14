@@ -16,6 +16,7 @@
         _attributes = attributes ;
         _propertyType = [SIRuntimePropertyType runtimePropertyTypeWithAttributes:attributes] ;
         _propertyEncoding = [SIRuntimeEncoding runtimeEncodingWithAttributes:attributes] ;
+        _varName = [self varNameWithAttributes:attributes] ;
         _structureName = [self structureNameWithAttributes:attributes] ;
         _clazz = [self classWithAttributes:attributes] ;
     }
@@ -51,6 +52,15 @@
         }
     }
     return clazz ;
+}
+
+- (NSString *)varNameWithAttributes:(NSString *)attributes{
+    NSString *varName = nil ;
+    NSString *lastAttribute = [attributes componentsSeparatedByString:@","].lastObject ;
+    if ([lastAttribute hasPrefix:@"V"]) {
+        varName = [lastAttribute substringFromIndex:1] ;
+    }
+    return varName ;
 }
 
 @end
