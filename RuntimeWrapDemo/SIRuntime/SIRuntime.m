@@ -161,7 +161,7 @@
 }
 
 - (void)swizzleMethod:(SIRuntimeMethod *)method with:(SIRuntimeMethod *)swizzledMethod{
-    Class cls = self.class;
+    Class cls = _clazz ;
     BOOL added = class_addMethod(cls, method.selector, swizzledMethod.implement, swizzledMethod.typeEncoding.UTF8String);
     if (added) {
         class_replaceMethod(cls, swizzledMethod.selector, method.implement, method.typeEncoding.UTF8String);
@@ -172,14 +172,14 @@
 }
 
 -(IMP)replaceMethod:(SIRuntimeMethod *)method with:(SIRuntimeMethod *)otherMethod{
-        return class_replaceMethod(_obj, method.selector, otherMethod.implement, otherMethod.typeEncoding.UTF8String);
+        return class_replaceMethod(_clazz, method.selector, otherMethod.implement, otherMethod.typeEncoding.UTF8String);
 }
 - (IMP)methodImplementation:(SEL)selector{
-    return class_getMethodImplementation(_obj, selector);
+    return class_getMethodImplementation(_clazz, selector);
 }
 
 - (BOOL)addMethod:(SIRuntimeMethod *)method{
-    return class_addMethod(_obj, method.selector, method.implement, method.typeEncoding.UTF8String);
+    return class_addMethod(_clazz, method.selector, method.implement, method.typeEncoding.UTF8String);
 }
 
 - (NSArray<SIRuntimeIvar *> *)ivarsListWithEnumrated:(BOOL)enumrated{
