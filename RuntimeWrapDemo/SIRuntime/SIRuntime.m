@@ -9,20 +9,22 @@
 #import "SIRuntime.h"
 
 @implementation SIRuntime{
+    id _obj ;
     NSMutableArray<SIRuntimeProperty *> *propertyList ;
     NSMutableArray<SIRuntimeIvar *>* ivarList ;
     NSMutableArray<SIRuntimeProtocol *>* protocolList ;
 }
 
-- (instancetype)initWithClass:(Class)clazz{
+- (instancetype)initWithObj:(id)obj{
     if (self = [super init]) {
-        _clazz = clazz ;
+        _obj = obj ;
+        _clazz = object_getClass(obj) ;
     }
     return self ;
 }
 
-+ (instancetype)runtimeWithClass:(Class)clazz{
-    return [[self alloc]initWithClass:clazz] ;
++ (instancetype)runtimeWithObj:(id)obj{
+    return [[self alloc]initWithObj:obj] ;
 }
 
 - (NSArray<SIRuntimeProperty *> *)propertyListWithEnumrated:(BOOL)enumrated{
@@ -147,6 +149,28 @@
     return method ;
 }
 
+- (void)swizzleMethod:(SIRuntimeMethod *)method with:(SIRuntimeMethod *)swizzledMethod{
+    Class cls = self.class;
+    BOOL added = class_addMethod(cls, method.selector, swizzledMethod.implement, swizzledMethod.typeEncoding.UTF8String);
+    if (added) {
+        class_replaceMethod(cls, swizzledMethod.selector, method.implement, method.typeEncoding.UTF8String);
+    } else {
+        method_exchangeImplementations(method.method, swizzledMethod.method);
+    }
+    
+}
+
+-(IMP)replaceMethod:(SIRuntimeMethod *)method with:(SIRuntimeMethod *)otherMethod{
+        return class_replaceMethod(_obj, method.selector, otherMethod.implement, otherMethod.typeEncoding.UTF8String);
+}
+- (IMP)methodImplementation:(SEL)selector{
+    return class_getMethodImplementation(_obj, selector);
+}
+
+- (BOOL)addMethod:(SIRuntimeMethod *)method{
+    return class_addMethod(_obj, method.selector, method.implement, method.typeEncoding.UTF8String);
+}
+
 - (NSArray<SIRuntimeIvar *> *)ivarsListWithEnumrated:(BOOL)enumrated{
     if (!_clazz) {
         return nil ;
@@ -203,23 +227,23 @@
 }
 
 - (void)addAssociatedProperty:(SEL)getter value:(id)value policy:(objc_AssociationPolicy)policy {
-    objc_setAssociatedObject(self, getter, value, policy);
+    objc_setAssociatedObject(_obj, getter, value, policy);
 }
 
 - (id)getAssociatedProperty:(SEL)getter {
-    return objc_getAssociatedObject(self, getter);
+    return objc_getAssociatedObject(_obj, getter);
 }
 
 - (void)removeAssociatedProperties {
-    objc_removeAssociatedObjects(self);
+    objc_removeAssociatedObjects(_obj);
 }
 
 - (id)valueOfIvar:(SIRuntimeIvar *)ivar {
-    return object_getIvar(self, ivar.ivar);
+    return object_getIvar(_obj, ivar.ivar);
 }
 
 - (void)setValue:(id)value forIvar:(SIRuntimeIvar *)ivar {
-    object_setIvar(self, ivar.ivar, value);
+    object_setIvar(_obj, ivar.ivar, value);
 }
 
 
@@ -241,16 +265,12 @@
     return class_getVersion(_clazz) ;
 }
 
-- (Class)setSuperclass:(Class)superclass {
-    return class_setSuperclass(_clazz, superclass);
-}
-
 - (BOOL)isMetaClass{
     return class_isMetaClass(_clazz) ;
 }
 
-- (void)removeClass{
-    objc_disposeClassPair(_clazz) ;
++ (void)removeClass:(SIRuntimeClass *)clazz{
+    objc_disposeClassPair(clazz.clazz) ;
 }
 
 - (size_t)instanceSize{

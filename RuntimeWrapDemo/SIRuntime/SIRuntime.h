@@ -16,10 +16,9 @@
 - (NSString *)superClassName ;
 - (int)classVersion ;
 
-- (Class)setSuperclass:(Class)superclass;
 - (BOOL)isMetaClass ;
-- (void)removeClass ;
 
++ (void)removeClass:(SIRuntimeClass *)clazz ;
 + (void)addNewClass:(SIRuntimeClass *)clazz ;
 
 - (size_t)instanceSize ;
@@ -43,6 +42,10 @@
 
 - (SIRuntimeMethod *)instanceMethodWithName:(NSString *)name ;
 - (SIRuntimeMethod *)classMethodWithName:(NSString *)name ;
+- (IMP)methodImplementation:(SEL)selector ;
+- (IMP)replaceMethod:(SIRuntimeMethod *)method with:(SIRuntimeMethod *)otherMethod ;
+- (void)swizzleMethod:(SIRuntimeMethod *)method with:(SIRuntimeMethod *)swizzledMethod ;
+- (BOOL)addMethod:(SIRuntimeMethod *)method ;
 
 - (NSArray<SIRuntimeIvar *>*)ivarsListWithEnumrated:(BOOL)enumrated ;
 - (SIRuntimeIvar *)ivarWithName:(NSString *)name ;
@@ -54,7 +57,7 @@
 - (SIRuntimeProtocol *)protocolWithName:(NSString *)name ;
 
 
-- (instancetype)initWithClass:(Class)clazz ;
-+ (instancetype)runtimeWithClass:(Class)clazz ;
+- (instancetype)initWithObj:(id)obj ;
++ (instancetype)runtimeWithObj:(id)obj ;
 
 @end
