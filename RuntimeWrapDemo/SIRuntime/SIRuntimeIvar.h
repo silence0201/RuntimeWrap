@@ -23,4 +23,7 @@
 - (instancetype)initWithIvar:(Ivar)ivar ;
 + (instancetype)runtimeIvarWithIvar:(Ivar)ivar ;
 
+- (instancetype)initWithName:(NSString *)name typeEncoding:(SIRuntimeEncoding *)type offset:(ptrdiff_t)offset ;
++ (instancetype)runtimeIvarWithName:(NSString *)name typeEncoding:(SIRuntimeEncoding *)type offset:(ptrdiff_t)offset;
+
 @end

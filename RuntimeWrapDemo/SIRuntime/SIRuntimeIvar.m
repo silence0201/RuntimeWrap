@@ -24,6 +24,19 @@
     return [[self alloc]initWithIvar:ivar] ;
 }
 
+- (instancetype)initWithName:(NSString *)name typeEncoding:(SIRuntimeEncoding *)type offset:(ptrdiff_t)offset{
+    if (self = [super init]) {
+        _name = name;
+        _offset = offset;
+        _type = type;
+    }
+    return self ;
+}
+
++ (instancetype)runtimeIvarWithName:(NSString *)name typeEncoding:(SIRuntimeEncoding *)type offset:(ptrdiff_t)offset{
+    return [[self alloc]initWithName:name typeEncoding:type offset:offset] ;
+}
+
 - (id)valueOfObject:(NSObject *)obj{
     Ivar ivar = class_getInstanceVariable([obj class], _name.UTF8String) ;
     if (ivar) {
