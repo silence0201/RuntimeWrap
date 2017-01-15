@@ -7,7 +7,6 @@
 //
 
 #import "SIRuntimeProtocol.h"
-#import <objc/runtime.h>
 
 @implementation SIRuntimeProtocol
 

@@ -6,11 +6,7 @@
 //  Copyright © 2017 Silence. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "SIRuntimeProperty.h"
-#import "SIRuntimeMethod.h"
-#import "SIRuntimeIvar.h"
-#import "SIRuntimeProtocol.h"
+#import "SIRuntimeClass.h"
 
 @interface SIRuntime : NSObject
 
@@ -23,6 +19,8 @@
 - (Class)setSuperclass:(Class)superclass;
 - (BOOL)isMetaClass ;
 - (void)removeClass ;
+
++ (void)addNewClass:(SIRuntimeClass *)clazz ;
 
 - (size_t)instanceSize ;
 

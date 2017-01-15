@@ -6,7 +6,6 @@
 //  Copyright © 2017 Silence. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "SIRuntimeMethod.h"
 
 @interface SIRuntimeProtocol : NSObject

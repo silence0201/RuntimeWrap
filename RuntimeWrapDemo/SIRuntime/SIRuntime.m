@@ -7,7 +7,6 @@
 //
 
 #import "SIRuntime.h"
-#import <objc/runtime.h>
 
 @implementation SIRuntime{
     NSMutableArray<SIRuntimeProperty *> *propertyList ;
@@ -316,6 +315,9 @@
     return nil;
 }
 
++ (void)addNewClass:(SIRuntimeClass *)clazz{
+    [clazz registerClass] ;
+}
 
 
 @end
