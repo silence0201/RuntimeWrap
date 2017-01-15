@@ -23,7 +23,12 @@
 
 @property (nonatomic,readonly) NSUInteger argumentCount ;
 
+- (void)exchangeImplementationsWithMethod:(SIRuntimeMethod *)anotherMethod;
+
 - (instancetype)initWithMethod:(Method)method ;
 + (instancetype)runtimeMethodWithMethod:(Method)method ;
+
+- (instancetype)initWithSelector:(SEL)sel implementation:(IMP)imp typeEncoding:(NSString *)type ;
++ (instancetype)runtimeMethodWithSelector:(SEL)sel implementation:(IMP)imp typeEncoding:(NSString *)type ;
 
 @end

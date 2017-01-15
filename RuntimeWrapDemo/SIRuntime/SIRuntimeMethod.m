@@ -27,6 +27,19 @@
     return  [[self alloc] initWithMethod:method] ;
 }
 
+- (instancetype)initWithSelector:(SEL)sel implementation:(IMP)imp typeEncoding:(NSString *)type{
+    if (self = [super init]) {
+        _selector = sel ;
+        _implement = imp ;
+        _typeEncoding = type ;
+    }
+    return self ;
+}
+
++ (instancetype)runtimeMethodWithSelector:(SEL)sel implementation:(IMP)imp typeEncoding:(NSString *)type{
+    return [[self alloc]initWithSelector:sel implementation:imp typeEncoding:type] ;
+}
+
 
 - (NSArray<SIRuntimeEncoding *> *)getArgumentsTypes{
     unsigned int count = method_getNumberOfArguments(_method);
@@ -53,6 +66,9 @@
     return nil;
 }
 
+- (void)exchangeImplementationsWithMethod:(SIRuntimeMethod *)anotherMethod{
+    method_exchangeImplementations(_method, anotherMethod.method) ;
+}
 
 
 
