@@ -11,14 +11,21 @@
 
 @interface SIRuntimeProperty : NSObject
 
+/// 属性名称
 @property (nonatomic,strong,readonly) NSString *name ;
+/// 对应变量名
 @property (nonatomic,strong,readonly) NSString *varName ;
+/// 属性描述
 @property (nonatomic,strong,readonly) NSString *attributes ;
 
+/// 属性对应类名,只有属性为Obj有效
 @property (nonatomic,assign,readonly) Class clazz ;
+/// 属性对应结构体名,只有属性为Struct有效
 @property (nonatomic,strong,readonly) NSString *structureName ;
 
+/// 属性Encode
 @property (nonatomic,strong,readonly) SIRuntimeEncoding *propertyEncoding ;
+/// 属性Type
 @property (nonatomic,strong,readonly) SIRuntimePropertyType *propertyType ;
 
 - (instancetype)initWithName:(NSString *)name andAttributes:(NSString *)attributes ;

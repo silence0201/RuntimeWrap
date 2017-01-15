@@ -172,7 +172,7 @@
 }
 
 -(IMP)replaceMethod:(SIRuntimeMethod *)method with:(SIRuntimeMethod *)otherMethod{
-        return class_replaceMethod(_clazz, method.selector, otherMethod.implement, otherMethod.typeEncoding.UTF8String);
+    return class_replaceMethod(_clazz, method.selector, otherMethod.implement, otherMethod.typeEncoding.UTF8String);
 }
 - (IMP)methodImplementation:(SEL)selector{
     return class_getMethodImplementation(_clazz, selector);

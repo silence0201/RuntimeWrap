@@ -10,6 +10,7 @@
 
 @interface SIRuntimeEncoding : NSObject
 
+/// 对应runtime的code
 @property (nonatomic,strong,readonly) NSString *code ;
 
 // Objective-C type encodings
