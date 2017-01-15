@@ -27,6 +27,17 @@
     return [[self alloc]initWithObj:obj] ;
 }
 
+- (instancetype)initWithClass:(Class)clazz{
+    if(self = [super init]){
+        _clazz = clazz ;
+    }
+    return self ;
+}
+
++ (instancetype)runtimeWithClass:(Class)clazz{
+    return [[self alloc]initWithClass:clazz] ;
+}
+
 - (NSArray<SIRuntimeProperty *> *)propertyListWithEnumrated:(BOOL)enumrated{
     if (!_clazz) {
         return nil ;

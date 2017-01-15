@@ -60,4 +60,7 @@
 - (instancetype)initWithObj:(id)obj ;
 + (instancetype)runtimeWithObj:(id)obj ;
 
+- (instancetype)initWithClass:(Class)clazz ;
++ (instancetype)runtimeWithClass:(Class)clazz ;
+
 @end
