@@ -292,7 +292,8 @@
     NSMutableArray<Class> *array = [NSMutableArray array];
     Class currentClass = _clazz ;
     while ([currentClass superclass]) {
-        [array addObject:[currentClass superclass]] ;
+        currentClass = [currentClass superclass] ;
+        [array addObject:currentClass] ;
     }
     return array ;
 }
