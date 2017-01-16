@@ -7,6 +7,10 @@ A Simple RuntimeWrap With Objective-C
 #####手工导入
 将项目目录下`SIRuntime`导入项目中
 
+#####Pod安装
+
+	pod 'SIRuntimeWrap', '~> 1.0'
+
 ###使用
 1. 导入头文件
 
