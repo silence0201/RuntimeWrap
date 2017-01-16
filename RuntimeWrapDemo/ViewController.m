@@ -8,8 +8,6 @@
 
 #import "ViewController.h"
 #import "SIRuntime.h"
-#import "SIRuntimeMethod.h"
-#import <objc/runtime.h>
 
 @interface ViewController ()
 
