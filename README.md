@@ -1,4 +1,6 @@
 # RuntimeWrap
+![Language](https://img.shields.io/badge/language-objc-orange.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)  
 A Simple RuntimeWrap With Objective-C
 
 使用说明
