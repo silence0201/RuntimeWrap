@@ -5,15 +5,15 @@ A Simple RuntimeWrap With Objective-C
 
 使用说明
 ====
-###安装
-#####手工导入
+### 安装
+##### 手工导入
 将项目目录下`SIRuntime`导入项目中
 
-#####Pod安装
+##### Pod安装
 
 	pod 'SIRuntimeWrap', '~> 1.0'
 
-###使用
+### 使用
 1. 导入头文件
 
 	```objective-c
@@ -45,7 +45,7 @@ A Simple RuntimeWrap With Objective-C
 	
 4. 更多方法,请查看`SIRuntime`注释
 	
-##RuntimeWrap
+## RuntimeWrap
 RuntimeWrap is available under the MIT license. See the LICENSE file for more info.
 	
 
